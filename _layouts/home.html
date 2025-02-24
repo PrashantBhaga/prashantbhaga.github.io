@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<div class="home">
+  <h1 class="page-heading">CLASSIFIED RESEARCH LOGS</h1>
+  
+  {{ content }}
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+    <li>
+      <h2>
+        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+      </h2>
+      <p class="post-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">
+          {{ post.date | date: site.lab_notes_style.date_format }}
+        </time>
+      </p>
+      <p>{{ post.excerpt }}</p>
+      <a href="{{ post.url | relative_url }}">Read full entry →</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

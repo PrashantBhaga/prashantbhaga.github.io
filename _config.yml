@@ -1,0 +1,33 @@
+# Basic Jekyll configuration
+title: "Secret Lab Notes"
+tagline: "Explorations in Decentralized Organic Computing & Quantum Technologies"
+description: "Lab journal entries on the intersection of organic computing, quantum tech, and planetary defense systems"
+baseurl: ""
+url: "https://prashantbhaga.github.io"
+
+# Build settings
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+theme: minima # We'll customize this with our lab notes styling
+
+# Lab notes custom styling (we'll use these variables in our CSS)
+lab_notes_style:
+  font: "monospace"
+  color_scheme: "dark"
+  date_format: "Lab Entry #%j, %Y-%m-%d"
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:collection/:year/:month/:day/:title/
+
+# Defaults
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Lab Director"

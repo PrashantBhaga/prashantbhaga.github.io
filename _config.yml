@@ -20,7 +20,7 @@ lab_notes_style:
 collections:
   posts:
     output: true
-    permalink: /:collection/:year/:month/:day/:title/
+    permalink: /:categories/:title/
 
 # Defaults
 defaults:

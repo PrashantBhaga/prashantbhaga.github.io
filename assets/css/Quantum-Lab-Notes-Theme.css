@@ -1,0 +1,322 @@
+/* Quantum Lab Notes Theme - Dark Mode */
+
+:root {
+  --bg-color: #0a0e17;
+  --bg-secondary: #121a2c;
+  --text-color: #e0e7ff;
+  --text-secondary: #8899cc;
+  --accent-color: #00ccff;
+  --accent-secondary: #7b42f6;
+  --code-bg: #1a2236;
+  --border-color: #283858;
+  --grid-line: rgba(40, 120, 190, 0.15);
+  --quantum-glow: 0 0 8px rgba(0, 204, 255, 0.7);
+}
+
+/* Base styles */
+body {
+  background-color: var(--bg-color);
+  background-image: 
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 30px 30px;
+  color: var(--text-color);
+  font-family: "JetBrains Mono", Consolas, Monaco, "Andale Mono", monospace;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.site-header {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border-color);
+  background-color: rgba(10, 14, 23, 0.9);
+  position: relative;
+}
+
+.site-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+}
+
+.site-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--accent-color);
+  text-decoration: none;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 5px;
+  text-shadow: var(--quantum-glow);
+}
+
+.site-tagline {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Content */
+.page-content {
+  padding: 40px 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--accent-color);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.page-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.page-heading::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 150px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color), transparent);
+}
+
+/* Post list */
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post-list li {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: var(--bg-secondary);
+  border-radius: 8px;
+  border-left: 4px solid var(--accent-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.post-list li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+.post-link {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.post-link:hover {
+  text-decoration: underline;
+  text-shadow: var(--quantum-glow);
+}
+
+.post-meta {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-style: italic;
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* Article */
+.post {
+  background-color: var(--bg-secondary);
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  margin-bottom: 40px;
+}
+
+.post-title {
+  font-size: 2.2rem;
+  margin-top: 0;
+  text-shadow: var(--quantum-glow);
+}
+
+.lab-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.lab-entry-header h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-secondary);
+  margin: 0;
+}
+
+.timestamp {
+  font-family: monospace;
+  background-color: var(--code-bg);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: var(--accent-color);
+}
+
+/* Code */
+pre, code {
+  background-color: var(--code-bg);
+  border-radius: 4px;
+  font-family: "JetBrains Mono", Consolas, Monaco, "Andale Mono", monospace;
+  font-size: 0.9rem;
+}
+
+code {
+  padding: 2px 5px;
+  color: var(--accent-color);
+}
+
+pre {
+  padding: 15px;
+  overflow-x: auto;
+  border-left: 3px solid var(--accent-secondary);
+}
+
+pre code {
+  padding: 0;
+  background-color: transparent;
+}
+
+/* Links */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+a:hover {
+  color: var(--accent-secondary);
+  text-shadow: 0 0 5px rgba(123, 66, 246, 0.5);
+}
+
+/* Footer */
+.site-footer {
+  padding: 20px 0;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .site-title {
+    font-size: 1.5rem;
+  }
+  
+  .site-tagline {
+    font-size: 0.9rem;
+  }
+  
+  .page-heading {
+    font-size: 2rem;
+  }
+  
+  .post-link {
+    font-size: 1.3rem;
+  }
+  
+  .post-title {
+    font-size: 1.8rem;
+  }
+  
+  .post {
+    padding: 20px;
+  }
+}
+
+/* Quantum/Blockchain Elements */
+.post-list li::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  box-shadow: var(--quantum-glow);
+  margin-left: -30px;
+  margin-top: 8px;
+}
+
+blockquote {
+  border-left: 4px solid var(--accent-secondary);
+  padding-left: 20px;
+  margin-left: 0;
+  color: var(--text-secondary);
+  font-style: italic;
+  position: relative;
+  background-color: rgba(123, 66, 246, 0.1);
+  padding: 15px 15px 15px 20px;
+  border-radius: 0 8px 8px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table th {
+  background-color: var(--code-bg);
+  color: var(--accent-color);
+  text-align: left;
+  padding: 12px 15px;
+}
+
+table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+table tr:nth-child(even) {
+  background-color: rgba(40, 56, 88, 0.5);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-secondary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}

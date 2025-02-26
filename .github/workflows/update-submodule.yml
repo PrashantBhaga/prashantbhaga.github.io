@@ -1,6 +1,5 @@
-name: Update Submodule
-  run: |
-    git submodule update --remote --merge
+name: Update Submodule (Lab Journal)
+
 on:
   push:
     branches:
@@ -22,6 +21,9 @@ jobs:
       - name: Update Submodule
         run: |
           git submodule update --remote --merge
+
+      - name: Debug Folder Structure
+        run: ls -R
 
       - name: Commit and Push Changes
         run: |

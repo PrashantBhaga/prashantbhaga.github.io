@@ -10,6 +10,10 @@ markdown: kramdown
 permalink: /:year/:month/:day/:title/
 theme: minima # We'll customize this with our lab notes styling
 
+# Include posts from submodule
+include:
+  - posts
+
 # Lab notes custom styling (we'll use these variables in our CSS)
 lab_notes_style:
   font: "monospace"
@@ -26,8 +30,13 @@ collections:
 defaults:
   -
     scope:
-      path: ""
+      path: "posts"
       type: "posts"
     values:
       layout: "post"
       author: "Lab Director"
+
+# Custom post location
+post_directories:
+  - "posts"
+  - "posts/posts"

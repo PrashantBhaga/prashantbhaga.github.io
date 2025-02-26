@@ -5,21 +5,47 @@ layout: default
   <h1 class="page-heading">CLASSIFIED RESEARCH LOGS</h1>
   
   {{ content }}
-
+  
   <ul class="post-list">
-    {% for post in site.posts %}
-    <li>
-      <h2>
-        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-      </h2>
-      <p class="post-meta">
-        <time datetime="{{ post.date | date_to_xmlschema }}">
-          {{ post.date | date: site.lab_notes_style.date_format }}
-        </time>
-      </p>
-      <p>{{ post.excerpt }}</p>
-      <a href="{{ post.url | relative_url }}">Read full entry →</a>
-    </li>
-    {% endfor %}
+    {% assign post_files = site.static_files | where_exp: "file", "file.path contains '/posts/'" | where_exp: "file", "file.extname == '.md'" %}
+    
+    {% if post_files.size > 0 %}
+      {% for file in post_files %}
+        {% if file.path != '/posts/README.md' %}
+        <li>
+          <h2>
+            <a class="post-link" href="{{ file.path | relative_url }}">
+              {% if file.basename contains ' ' %}
+                {{ file.basename | replace: '.md', '' }}
+              {% else %}
+                {{ file.basename | replace: '-', ' ' | capitalize }}
+              {% endif %}
+            </a>
+          </h2>
+          <p class="post-meta">
+            <time datetime="{{ file.modified_time | date_to_xmlschema }}">
+              {{ file.modified_time | date: "%b %-d, %Y" }}
+            </time>
+          </p>
+          <a href="{{ file.path | relative_url }}">Read full entry →</a>
+        </li>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {% for post in site.posts %}
+      <li>
+        <h2>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        </h2>
+        <p class="post-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">
+            {{ post.date | date: site.lab_notes_style.date_format }}
+          </time>
+        </p>
+        <p>{{ post.excerpt }}</p>
+        <a href="{{ post.url | relative_url }}">Read full entry →</a>
+      </li>
+      {% endfor %}
+    {% endif %}
   </ul>
 </div>

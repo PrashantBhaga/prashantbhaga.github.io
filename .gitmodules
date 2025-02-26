@@ -1,3 +1,3 @@
 [submodule "_posts"]
-  path = _posts
+  path = posts
   url = https://github.com/PrashantBhaga/lab-journal-public.git

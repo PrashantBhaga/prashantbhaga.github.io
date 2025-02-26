@@ -29,3 +29,19 @@ titles_from_headings:
   enabled: true
   strip_title: true
   collections: true
+
+# Add a markdown processor to handle rendering
+markdown_ext: "markdown,md"
+
+# Enable direct markdown rendering
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
+  -
+    scope:
+      path: "posts"
+    values:
+      layout: "post"

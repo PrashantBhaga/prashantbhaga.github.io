@@ -1,34 +1,53 @@
 name: Update Submodule (Lab Journal)
-
 on:
   push:
     branches:
       - main
   schedule:
-    - cron: '0 0 * * *'  # Runs every day at midnight
+    - cron: '0 0 * * *'  # Fixed the cron syntax
   workflow_dispatch:
-
 jobs:
   update-submodule:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Blog Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # Updated to v3
         with:
-          submodules: true
+          submodules: recursive  # Changed to recursive
           token: ${{ secrets.GITHUB_TOKEN }}
-
+      
+      - name: Debug Before Update
+        run: |
+          echo "Current directory contents:"
+          ls -la
+          echo "Submodule status:"
+          git submodule status
+          echo ".gitmodules content:"
+          cat .gitmodules
+      
       - name: Update Submodule
         run: |
+          git submodule update --init --recursive
           git submodule update --remote --merge
-
-      - name: Debug Folder Structure
-        run: ls -R
-
+      
+      - name: Debug After Update
+        run: |
+          echo "Directory contents after update:"
+          ls -la
+          echo "Posts directory contents (if exists):"
+          ls -la posts 2>/dev/null || echo "posts directory not found"
+      
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          git add posts
-          git commit -m "Update lab journal submodule" || echo "No changes to commit"
-          git push
+          
+          # Check if posts directory exists and has changes
+          if [ -d "posts" ]; then
+            git add posts
+            git commit -m "Update lab journal submodule" || echo "No changes to commit"
+            git push
+          else
+            echo "ERROR: posts directory not found. Cannot commit changes."
+            exit 1
+          fi

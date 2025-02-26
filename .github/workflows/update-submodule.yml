@@ -1,5 +1,6 @@
-name: Update Submodule (Lab Journal)
-
+name: Update Submodule
+  run: |
+    git submodule update --remote --merge
 on:
   push:
     branches:

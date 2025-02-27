@@ -1,0 +1,169 @@
+/* Markdown Styling for GitHub Pages */
+
+/* Basic page structure */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    padding: 0 20px;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.75em; }
+h3 { font-size: 1.5em; }
+h4 { font-size: 1.25em; }
+h5 { font-size: 1em; }
+h6 { font-size: 0.875em; }
+
+/* Paragraphs and text */
+p {
+    margin-bottom: 20px;
+}
+
+/* Links */
+a {
+    color: #0366d6;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Lists */
+ul, ol {
+    margin: 20px 0;
+    padding: 0 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ccc;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+/* Blockquotes */
+blockquote {
+    margin: 20px 0;
+    padding: 10px 20px;
+    border-left: 5px solid #ccc;
+    color: #666;
+    background: #f9f9f9;
+}
+
+/* Code blocks */
+pre {
+    background: #f5f5f5;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    background: #f5f5f5;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+/* Horizontal rules */
+hr {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 20px 0;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Inline elements */
+strong {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+/* Footnotes and sub-elements */
+sup {
+    vertical-align: super;
+    font-size: smaller;
+}
+
+sub {
+    vertical-align: sub;
+    font-size: smaller;
+}
+
+/* Spacing and readability */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Add some breathing room */
+section {
+    margin-bottom: 40px;
+}
+
+/* Let’s make it easy on the eyes */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+
+    a {
+        color: #bb86fc;
+    }
+
+    blockquote {
+        background: #1e1e1e;
+        border-left-color: #bb86fc;
+    }
+
+    pre, code {
+        background: #1e1e1e;
+    }
+
+    th {
+        background-color: #333;
+    }
+}
+
+/* Done! */

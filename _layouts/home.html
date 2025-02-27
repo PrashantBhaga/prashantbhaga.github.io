@@ -7,29 +7,33 @@ layout: default
   {{ content }}
   
   <ul class="post-list">
-    {% assign post_files = site.static_files | where_exp: "file", "file.path contains '/posts/'" | where_exp: "file", "file.extname == '.md'" %}
+    {% assign markdown_files = site.pages | where_exp: "page", "page.path contains 'posts/'" | where_exp: "page", "page.name != 'README.md'" | sort: "date" | reverse %}
     
-    {% if post_files.size > 0 %}
-      {% for file in post_files %}
-        {% if file.path != '/posts/README.md' %}
+    {% if markdown_files.size > 0 %}
+      {% for page in markdown_files %}
         <li>
           <h2>
-            <a class="post-link" href="{{ file.path | relative_url }}">
-              {% if file.basename contains ' ' %}
-                {{ file.basename | replace: '.md', '' }}
+            <a class="post-link" href="{{ page.url | relative_url }}">
+              {% if page.title %}
+                {{ page.title }}
               {% else %}
-                {{ file.basename | replace: '-', ' ' | capitalize }}
+                {{ page.name | replace: '.md', '' | replace: '-', ' ' | capitalize }}
               {% endif %}
             </a>
           </h2>
           <p class="post-meta">
-            <time datetime="{{ file.modified_time | date_to_xmlschema }}">
-              {{ file.modified_time | date: "%b %-d, %Y" }}
-            </time>
+            {% if page.date %}
+              <time datetime="{{ page.date | date_to_xmlschema }}">
+                {{ page.date | date: "%b %-d, %Y" }}
+              </time>
+            {% else %}
+              <time datetime="{{ page.path | file_date | date_to_xmlschema }}">
+                {{ page.path | file_date | date: "%b %-d, %Y" }}
+              </time>
+            {% endif %}
           </p>
-          <a href="{{ file.path | relative_url }}">Read full entry →</a>
+          <a href="{{ page.url | relative_url }}">Read full entry →</a>
         </li>
-        {% endif %}
       {% endfor %}
     {% else %}
       {% for post in site.posts %}

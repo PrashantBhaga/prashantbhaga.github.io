@@ -45,3 +45,12 @@ defaults:
       path: "posts"
     values:
       layout: "post"
+
+# Enable reading files with front matter
+read_front_matter: true
+
+# Set up excerpt separator
+excerpt_separator: <!--more-->
+
+# Process pages in subdirectories
+include_pages_in_subpaths: true
